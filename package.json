@@ -1,0 +1,59 @@
+{
+  "name": "gitbook-plugin-algolia",
+  "description": "Use Algolia as a backend for research",
+  "main": "index.js",
+  "version": "0.0.1",
+  "engines": {
+    "gitbook": ">=3.0.0-pre.0"
+  },
+  "author": "GitBook Team <contact@gitbook.com>",
+  "contributors": [
+    {
+      "name": "Johan Preynat",
+      "email": "johan@gitbook.com"
+    }
+  ],
+  "homepage": "https://github.com/GitbookIO/plugin-algolia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GitbookIO/plugin-algolia.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/GitbookIO/plugin-algolia/issues"
+  },
+  "dependencies": {
+    "algoliasearch": "3.13.1",
+    "q": "1.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.7.0"
+  },
+  "scripts": {
+    "prepublish": "cp node_modules/algoliasearch/dist/algoliasearch.min.js ./assets/algoliasearch.min.js"
+  },
+  "gitbook": {
+    "properties": {
+      "index": {
+        "type": "string",
+        "title": "Algolia index name",
+        "required": true
+      },
+      "applicationID": {
+        "type": "string",
+        "title": "Algolia Application ID",
+        "required": true
+      },
+      "publicKey": {
+        "type": "string",
+        "title": "Algolia Search-Only API Key",
+        "required": true
+      },
+      "privateKey": {
+        "type": "string",
+        "title": "Algolia Admin API Key",
+        "required": true
+      }
+    }
+  }
+}
