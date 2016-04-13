@@ -7,7 +7,8 @@ require([
         // Create algolia client
         // eslint-disable-next-line no-undef
         this.client = algoliasearch(config.algolia.applicationID, config.algolia.publicKey);
-        this.index = this.client.initIndex(config.algolia.index);
+        this.index  = this.client.initIndex(config.algolia.index);
+        this.name   = 'AlgoliaSearchEngine';
     }
 
     AlgoliaSearchEngine.prototype.init = function() {
@@ -16,16 +17,26 @@ require([
 
     AlgoliaSearchEngine.prototype.search = function(q) {
         return this.index.search(q)
-        .then(function(content) {
-            return content.hits.map(function(h) {
-                var parts = h.url.split('#');
+        .then(function(res) {
+            // return content;
+            var results = res.hits.map(function(hit) {
                 return {
-                    path: parts[0],
-                    hash: parts[1]
+                    title:   hit.title,
+                    body:    hit['_highlightResult'].body.value,
+                    url:     hit.url
                 };
             });
+
+            return {
+                query:   res.query,
+                count:   res.nbHits,
+                results: results
+            };
         });
     };
 
-    window.SearchEngine = AlgoliaSearchEngine;
+    // Set gitbook research to Algolia
+    gitbook.events.bind('start', function(e, config) {
+        gitbook.search.setEngine(AlgoliaSearchEngine, config);
+    });
 });
