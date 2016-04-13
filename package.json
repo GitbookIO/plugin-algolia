@@ -48,11 +48,6 @@
         "type": "string",
         "title": "Algolia Search-Only API Key",
         "required": true
-      },
-      "privateKey": {
-        "type": "string",
-        "title": "Algolia Admin API Key",
-        "required": true
       }
     }
   }
