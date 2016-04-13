@@ -15,7 +15,7 @@ module.exports = {
         init: function() {
             // Initialize Algolia client
             var config = this.config.get('pluginsConfig.algolia') || this.config.get('algolia');
-            client = algoliasearch(config.applicationID, config.privateKey);
+            client = algoliasearch(config.applicationID, process.env.ALGOLIA_PRIVATEKEY);
 
             // Initialize index with book's title
             index = client.initIndex(config.index);
