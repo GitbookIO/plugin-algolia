@@ -15,8 +15,8 @@ require([
         return $.Deferred().resolve().promise();
     };
 
-    AlgoliaSearchEngine.prototype.search = function(q) {
-        return this.index.search(q)
+    AlgoliaSearchEngine.prototype.search = function(q, offset, length) {
+        return this.index.search(q, { hitsPerPage: length })
         .then(function(res) {
             // return content;
             var results = res.hits.map(function(hit) {
