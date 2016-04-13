@@ -34,9 +34,12 @@ module.exports = {
 
             // Add to index
             return index.addObject({
-                url: this.output.toURL(page.path),
-                title: page.title || '',
-                body: text
+                url:   this.output.toURL(page.path),
+                path:  page.path,
+                title: page.title,
+                body:  text,
+                level: page.level,
+                depth: page.depth
             })
             .then(function() {
                 return page;
