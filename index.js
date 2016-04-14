@@ -13,6 +13,9 @@ module.exports = {
 
     hooks: {
         init: function() {
+            // Don't index when not generating website
+            if (this.output.name != 'website') return;
+
             // Check that private key has been provided
             if (!process.env.ALGOLIA_PRIVATEKEY) {
                 throw new Error('You need to configure the ALGOLIA_PRIVATEKEY environment variable using your Admin API Key.');
