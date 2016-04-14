@@ -26,7 +26,10 @@ module.exports = {
             index = client.initIndex(config.index);
 
             // Clean index for updates
-            return index.clearIndex();
+            return index.clearIndex()
+            .then(function(content) {
+                return index.waitTask(content.taskID);
+            });
         },
 
         page: function(page) {
