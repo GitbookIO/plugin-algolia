@@ -23,8 +23,7 @@
     "url": "https://github.com/GitbookIO/plugin-algolia/issues"
   },
   "dependencies": {
-    "algoliasearch": "3.13.1",
-    "q": "1.4.1"
+    "algoliasearch": "3.13.1"
   },
   "devDependencies": {
     "eslint": "^2.7.0"
