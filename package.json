@@ -29,9 +29,6 @@
   "devDependencies": {
     "eslint": "^2.7.0"
   },
-  "scripts": {
-    "prepublish": "cp node_modules/algoliasearch/dist/algoliasearch.min.js ./assets/algoliasearch.min.js"
-  },
   "gitbook": {
     "properties": {
       "index": {
