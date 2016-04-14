@@ -7,7 +7,7 @@ module.exports = {
     book: {
         assets: './assets',
         js: [
-            'http://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', 'search-algolia.js'
+            'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', 'search-algolia.js'
         ]
     },
 
