@@ -16,7 +16,9 @@ require([
     };
 
     AlgoliaSearchEngine.prototype.search = function(q, offset, length) {
-        return this.index.search(q, { hitsPerPage: length })
+        var d = $.Deferred();
+
+        this.index.search(q, { hitsPerPage: length })
         .then(function(res) {
             // return content;
             var results = res.hits.map(function(hit) {
@@ -27,12 +29,17 @@ require([
                 };
             });
 
-            return {
+            d.resolve({
                 query:   res.query,
                 count:   res.nbHits,
                 results: results
-            };
+            });
+        })
+        .catch(function(err) {
+            d.reject(err);
         });
+
+        return d.promise();
     };
 
     // Set gitbook research to Algolia
