@@ -15,7 +15,7 @@ module.exports = {
         init: function() {
             // Check that private key has been provided
             if (!process.env.ALGOLIA_PRIVATEKEY) {
-                throw new Error('You need to configure the ALGOLIA_PRIVATEKEY environment variable using your Admin API Key.')
+                throw new Error('You need to configure the ALGOLIA_PRIVATEKEY environment variable using your Admin API Key.');
             }
 
             // Initialize Algolia client
@@ -35,7 +35,7 @@ module.exports = {
 
             this.log.debug.ln('index page', page.path);
             // Transform as text
-            text = page.content.replace(/(<([^>]+)>)/ig, '');
+            var text = page.content.replace(/(<([^>]+)>)/ig, '');
 
             // Add to index
             return index.addObject({
