@@ -34,3 +34,17 @@ $ ALGOLIA_PRIVATEKEY="algolia-admin-api-key" gitbook serve
 As of Algolia's default behavior, you don't need to create the index manually before indexing your content.
 
 Be cautious though that the plugin will replace your whole index at each build phase. If you choose to use an existing index, the plugin will utterly replace its content.
+
+#### Disable indexing of a page
+
+You can disable the indexing of a specific page by adding a YAML header to the page:
+
+```md
+---
+search: false
+---
+
+# My Page
+
+This page is not indexed in Algolia.
+```

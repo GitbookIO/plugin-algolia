@@ -37,7 +37,9 @@ module.exports = {
 
         page: function(page) {
             // Don't index when not generating website or if index has not been set
-            if (this.output.name != 'website' || !index) return page;
+            if (this.output.name != 'website' || !index || page.search === false) {
+                return page;
+            }
 
             this.log.debug.ln('index page', page.path);
             // Transform as text
