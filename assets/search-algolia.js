@@ -2,6 +2,8 @@ require([
     'gitbook',
     'jquery'
 ], function(gitbook, $) {
+    var freeAccount = true;
+
     // Define algolia search engine
     function AlgoliaSearchEngine(config) {
         // Create algolia client
@@ -42,8 +44,29 @@ require([
         return d.promise();
     };
 
-    // Set gitbook research to Algolia
     gitbook.events.bind('start', function(e, config) {
+        // Set gitbook research to Algolia
         gitbook.search.setEngine(AlgoliaSearchEngine, config);
+
+        // Set account type
+        freeAccount = config.algolia.freeAccount;
+    });
+
+    gitbook.events.on('page.change', function() {
+        if (freeAccount) {
+            // Add Algolia logo for free accounts
+            var $searchResultsTitle = $('.search-results-title');
+
+            var $poweredBy = $('<span>', {
+                text: 'powered by ',
+                class: 'powered-by-algolia'
+            });
+            var $algoliaLogo = $('<img>', {
+                src: 'gitbook/gitbook-plugin-algolia/algolia-logo.jpg'
+            });
+
+            $poweredBy.append($algoliaLogo);
+            $searchResultsTitle.before($poweredBy);
+        }
     });
 });
