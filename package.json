@@ -44,6 +44,11 @@
         "type": "string",
         "title": "Algolia Search-Only API Key",
         "required": true
+      },
+      "freeAccount": {
+        "type": "bool",
+        "title": "Is your Algolia account free",
+        "default": true
       }
     }
   }
