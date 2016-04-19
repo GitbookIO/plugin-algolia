@@ -1,10 +1,12 @@
-span.powered-by-algolia {
-    display: block;
-    width: 100%;
-    text-align: center;
+.powered-by-algolia {
+    margin-top: 50px;
+    text-align: right;
     opacity: 0.75;
 
     color: #555;
     font-size: 13px;
-    font-style: italic;
+}
+
+.powered-by-algolia > img {
+    vertical-align: bottom;
 }
