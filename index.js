@@ -8,7 +8,8 @@ module.exports = {
         assets: './assets',
         js: [
             'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', 'search-algolia.js'
-        ]
+        ],
+        css: ['plugin-algolia.css']
     },
 
     hooks: {
