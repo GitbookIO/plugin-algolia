@@ -42,8 +42,8 @@ require([
         return d.promise();
     };
 
-    // Set gitbook research to Algolia
     gitbook.events.bind('start', function(e, config) {
+        // Set gitbook research to Algolia
         gitbook.search.setEngine(AlgoliaSearchEngine, config);
     });
 });

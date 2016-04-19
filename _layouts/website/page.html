@@ -1,0 +1,11 @@
+{% extends template.self %}
+
+{% block search_has_results %}
+    {{ super() }}
+
+    {% if config.pluginsConfig.algolia.freeAccount %}
+    <div class="powered-by-algolia">
+        powered by <a href="https://algolia.com" target="_blank"><img src="{{ "gitbook-plugin-algolia/algolia-logo.jpg"|resolveAsset }}" /></a>
+    </div>
+    {% endif %}
+{% endblock %}
