@@ -19,7 +19,9 @@ module.exports = {
 
             // Check that private key has been provided
             if (!process.env.ALGOLIA_PRIVATEKEY) {
-                throw new Error('You need to configure the ALGOLIA_PRIVATEKEY environment variable using your Admin API Key.');
+                this.log.warn.ln('Algolia indexation is disabled:');
+                this.log.warn.ln('You need to configure the ALGOLIA_PRIVATEKEY environment variable using your Admin API Key.');
+                return;
             }
 
             // Initialize Algolia client
