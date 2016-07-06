@@ -17,10 +17,10 @@ This plugins requires gitbook `>=3.0.0`.
 1. Open Settings > Plugins Store interface in the Book Editor.
 2. Install the `algolia` plugin.
 3. Specify the following values in the modal for your book:
-    * **Index ID**, which is the name of the index you set up in Algolia web.
-    * **Application ID**, which is your unique application ID for API identification. 
-    * **Search-only API Key**, which is the unique ID for search queries.
-    * **Is your algolia account free**, which you leave as `true` if you have what Algolia call a "Hacker Account".
+    * **Algolia Index Name**, which is the name of the index you set up in Algolia web.
+    * **Algolia Application ID**, which is your unique application ID for API identification. 
+    * **Algolia Search-Only API Key**, which is the unique ID for search queries.
+    * **Is your Algolia account free**, which you leave as `true` if you have what Algolia call a "Hacker Account".
 
 If you prefer, you can declare the plug-in values in the `book.json` file.
 
