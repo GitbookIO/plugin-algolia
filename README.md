@@ -20,7 +20,7 @@ This plugins requires gitbook `>=3.0.0`.
     * **Index ID**, which is the name of the index you set up in Algolia web.
     * **Application ID**, which is your unique application ID for API identification. 
     * **Search-only API Key**, which is the unique ID for search queries.
-    * **Is your algoria account free**, which you leave as `true` if you have what Algoria call a "Hacker Account".
+    * **Is your algolia account free**, which you leave as `true` if you have what Algolia call a "Hacker Account".
 
 If you prefer, you can declare the plug-in values in the `book.json` file.
 
