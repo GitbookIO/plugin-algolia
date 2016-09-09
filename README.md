@@ -10,28 +10,26 @@ This plugins requires gitbook `>=3.0.0`.
 
 1. Sign up to [Algolia](https://www.algolia.com)
 2. Set up a basic index.
-3. Access your [API keys settings](https://www.algolia.com/api-keys), and leave this page open.
+3. Access your [API keys settings](https://www.algolia.com/api-keys), and keep this page open for the next steps.
 
 ### Set up the plugin in your book.
 
-1. Open Settings > Plugins Store interface in the Book Editor.
+1. Open Settings > Plugins Store interface in the GitBook Editor.
 2. Install the `algolia` plugin.
 3. Specify the following values in the modal for your book:
     * **Algolia Index Name**, which is the name of the index you set up in Algolia web.
-    * **Algolia Application ID**, which is your unique application ID for API identification. 
+    * **Algolia Application ID**, which is your unique application ID for API identification.
     * **Algolia Search-Only API Key**, which is the unique ID for search queries.
     * **Is your Algolia account free**, which you leave as `true` if you have what Algolia call a "Hacker Account".
 
-If you prefer, you can declare the plug-in values in the `book.json` file.
-
-Add the plugin and its configuration to your `book.json`:
+Or if you prefer, you can declare the plug-in values in the `book.json` file. Add the plugin and its configuration to your `book.json`:
 
 ```JSON
 {
     "plugins": ["algolia"],
     "pluginsConfig": {
         "algolia": {
-            "index": "whatever-name-for-your-index",
+            "index": "algolia-index-name",
             "applicationID": "algolia-application-id",
             "publicKey": "algolia-search-only-api-key"
             "freeAccount": "true"
@@ -42,15 +40,14 @@ Add the plugin and its configuration to your `book.json`:
 
 ### Set Algolia Environment Variables
 
-If you are using the GitBook Editor, you specify the `ALGOLIA_PRIVATEKEY` in the Settings of your book.
+If you are using the GitBook Editor, you can specify the `ALGOLIA_PRIVATEKEY` in the Settings of your book.
 
-1. Open https://www.gitbook.com/`@username]`/dashboard.
-2. Select the book you want to add the environment variable to.
-3. Click `Settings`.
+1. Login to https://www.gitbook.com
+2. Go to the `Settings` of the book you want to add the environment variable to.
 4. Scroll down to the `Environment Variables` group.
-5. Add the `ALGOLIA_PRIVATEKEY` value from your API Keys page.
+5. Add a new variable, named `ALGOLIA_PRIVATEKEY`, and put your **Admin API Key** as value.
 
-If you are using the command line, pass your **Admin API Key** as an environment variable when launching gitbook, using `ALGOLIA_PRIVATEKEY`:
+If you are using the command line, pass your **Admin API Key** as an environment variable when launching gitbook:
 
 ```Bash
 $ ALGOLIA_PRIVATEKEY="algolia-admin-api-key" gitbook serve
