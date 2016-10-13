@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "gitbook-plugin": "^4.0.0",
+    "eslint": "3.7.1",
     "eslint-config-gitbook": "1.4.0"
   },
   "engines": {
