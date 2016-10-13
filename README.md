@@ -31,7 +31,7 @@ Or if you prefer, you can declare the plug-in values in the `book.json` file. Ad
         "algolia": {
             "index": "algolia-index-name",
             "applicationID": "algolia-application-id",
-            "publicKey": "algolia-search-only-api-key"
+            "publicKey": "algolia-search-only-api-key",
             "freeAccount": "true"
         }
     }
