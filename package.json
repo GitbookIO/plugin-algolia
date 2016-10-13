@@ -6,7 +6,7 @@
   "browser": "./_assets/plugin.js",
   "dependencies": {
     "gitbook-core": "^4.0.0",
-    "algoliasearch": "3.13.1"
+    "algoliasearch": "3.18.1"
   },
   "devDependencies": {
     "gitbook-plugin": "^4.0.0",
