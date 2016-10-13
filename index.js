@@ -4,14 +4,6 @@ var client = null;
 var index = null;
 
 module.exports = {
-    book: {
-        assets: './assets',
-        js: [
-            'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', 'search-algolia.js'
-        ],
-        css: ['plugin-algolia.css']
-    },
-
     hooks: {
         init: function() {
             // Don't index when not generating website

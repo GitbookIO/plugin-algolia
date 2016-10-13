@@ -3,8 +3,21 @@
   "description": "Use Algolia as a backend for research",
   "main": "index.js",
   "version": "1.0.7",
+  "browser": "./_assets/plugin.js",
+  "dependencies": {
+    "gitbook-core": "^4.0.0",
+    "algoliasearch": "3.13.1"
+  },
+  "devDependencies": {
+    "gitbook-plugin": "^4.0.0",
+    "eslint-config-gitbook": "1.4.0"
+  },
   "engines": {
-    "gitbook": ">=3.0.0-pre.0"
+    "gitbook": ">=4.0.0-alpha.0"
+  },
+  "scripts": {
+    "build-js": "gitbook-plugin build ./src/index.js ./_assets/plugin.js",
+    "prepublish": "npm run build-js"
   },
   "author": "GitBook Team <contact@gitbook.com>",
   "contributors": [
@@ -21,12 +34,6 @@
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/GitbookIO/plugin-algolia/issues"
-  },
-  "dependencies": {
-    "algoliasearch": "3.13.1"
-  },
-  "devDependencies": {
-    "eslint": "^2.7.0"
   },
   "gitbook": {
     "properties": {
