@@ -28,7 +28,7 @@ function searchHandler(query, dispatch, getState) {
             const results = res.hits.map(function(hit) {
                 return {
                     title:   hit.title,
-                    body:    hit['_highlightResult'].body.value,
+                    body:    hit.body,
                     url:     hit.url
                 };
             });
