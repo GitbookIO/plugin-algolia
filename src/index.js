@@ -1,12 +1,19 @@
 const GitBook = require('gitbook-core');
 const algoliasearch = require('algoliasearch');
 
+const AlgoliaResults = require('./components/AlgoliaResults');
+
 const HITS_PER_PAGE = 15;
 
 module.exports = GitBook.createPlugin({
-    activate: (dispatch, getState, { Search }) => {
+    activate: (dispatch, getState, { Search, Components }) => {
         dispatch(Search.registerHandler('algolia', searchHandler));
+
+        if (isFreeAccount(getState)) {
+            dispatch(Components.registerComponent(AlgoliaResults, { role: 'search:results' }));
+        }
     },
+
     reduce: (state, action) => state
 });
 
@@ -35,11 +42,27 @@ function searchHandler(query, dispatch, getState) {
 }
 
 /**
+ * #param {Function} getState
+ * @return {Object} The plugin config
+ */
+function getConfig(getState) {
+    return getState().config.getIn(['pluginsConfig', 'algolia']);
+}
+
+/**
  * Return the Algolia client. Initialize it if needed.
- * @param getState
+ *#param {Function} getState
  */
 function getAlgoliaIndex(getState) {
-    const config = getState().config.getIn(['pluginsConfig', 'algolia']);
+    const config = getConfig(getState);
     const client = algoliasearch(config.get('applicationID'), config.get('publicKey'));
     return client.initIndex(config.get('index'));
+}
+
+/**
+ * @param getState
+ * @return {Boolean} true if the configured account is free
+ */
+function isFreeAccount(getState) {
+    return getConfig(getState).get('freeAccount');
 }
