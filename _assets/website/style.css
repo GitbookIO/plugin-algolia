@@ -1,9 +1,10 @@
-Algolia {
+.Algolia {
     font-size: 10pt;
     margin-top: 50px;
     text-align: right;
 }
 
-Algolia-logo {
+.Algolia-logo {
     height: 20pt;
+    vertical-align: middle;
 }
