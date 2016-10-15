@@ -6,20 +6,33 @@ const { React } = GitBook;
  */
 const AlgoliaResults = React.createClass({
     propTypes: {
+        file: GitBook.Shapes.File.isRequired,
         children: React.PropTypes.node
     },
 
     render() {
+        const { file, children } = this.props;
+
         return (
             <div>
                 <GitBook.ImportCSS href="gitbook/algolia/style.css" />
-                { this.props.children }
+                { children }
                 <div className="Algolia">
-                    Powered by <img className="Algolia-logo" src="gitbook/algolia/Algolia_logo_bg-white.svg" />
+                    <a href="https://www.algolia.com/">
+                        Powered by <img className="Algolia-logo"
+                                        src={file.relative('gitbook/algolia/Algolia_logo_bg-white.svg')} />
+                    </a>
                 </div>
             </div>
         );
     }
 });
 
-module.exports = AlgoliaResults;
+function mapStateToProps(state) {
+    return {
+        file: state.file
+    };
+}
+
+
+module.exports = GitBook.connect(AlgoliaResults, mapStateToProps);
