@@ -1,7 +1,12 @@
 .Algolia {
+    opacity: 0.5;
     font-size: 10pt;
     margin-top: 50px;
     text-align: right;
+}
+
+.Algolia a {
+    color: inherit;
 }
 
 .Algolia-logo {
