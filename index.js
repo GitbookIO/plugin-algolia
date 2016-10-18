@@ -1,11 +1,11 @@
-var algoliasearch = require('algoliasearch');
+const algoliasearch = require('algoliasearch');
 
-var client = null;
-var index = null;
+let client = null;
+let index = null;
 
 module.exports = {
     hooks: {
-        init: function() {
+        init() {
             // Don't index when not generating website
             if (this.output.name != 'website') return;
 
@@ -17,7 +17,7 @@ module.exports = {
             }
 
             // Initialize Algolia client
-            var config = this.config.get('pluginsConfig.algolia') || this.config.get('algolia');
+            const config = this.config.get('pluginsConfig.algolia') || this.config.get('algolia');
             client = algoliasearch(config.applicationID, process.env.ALGOLIA_PRIVATEKEY);
 
             // Initialize index with book's title
@@ -30,7 +30,7 @@ module.exports = {
             });
         },
 
-        page: function(page) {
+        page(page) {
             // Don't index when not generating website or if index has not been set
             if (this.output.name != 'website' || !index || page.search === false) {
                 return page;
@@ -38,7 +38,7 @@ module.exports = {
 
             this.log.debug.ln('index page', page.path);
             // Transform as text
-            var text = page.content.replace(/(<([^>]+)>)/ig, '');
+            const text = page.content.replace(/(<([^>]+)>)/ig, '');
 
             // Add to index
             return index.addObject({
