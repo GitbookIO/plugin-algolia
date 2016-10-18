@@ -89,7 +89,7 @@ search: false
 
 # My Page
 
-This page is not indexed in Lunr.
+This page is not indexed in by Algolia.
 ```
 
 ### Fine tuning the Algolia search rankings
