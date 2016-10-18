@@ -6,7 +6,7 @@ const { React } = GitBook;
  */
 const AlgoliaResults = React.createClass({
     propTypes: {
-        file: GitBook.Shapes.File.isRequired,
+        file: GitBook.PropTypes.File.isRequired,
         children: React.PropTypes.node
     },
 
