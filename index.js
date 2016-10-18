@@ -31,8 +31,10 @@ module.exports = {
         },
 
         page(page) {
+            const searchConfig = page.attributes.search;
+
             // Don't index when not generating website or if index has not been set
-            if (this.output.name != 'website' || !index || page.search === false) {
+            if (this.output.name != 'website' || !index || searchConfig === false) {
                 return page;
             }
 
@@ -40,11 +42,17 @@ module.exports = {
             // Transform as text
             const text = page.content.replace(/(<([^>]+)>)/ig, '');
 
+            let keywords = [];
+            if (searchConfig) {
+                keywords = searchConfig.keywords || [];
+            }
+
             // Add to index
             return index.addObject({
                 url:   this.output.toURL(page.path),
                 path:  page.path,
                 title: page.title,
+                keywords,
                 body:  text,
                 level: page.level,
                 depth: page.depth
