@@ -2,7 +2,7 @@
 
 Use Algolia as a back-end to index and search your book's content.
 
-This plugins requires gitbook `>=3.0.0`.
+This plugins requires gitbook `>=4.0.0`.
 
 ## How to use it?
 
