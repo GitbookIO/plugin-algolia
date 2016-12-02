@@ -2,6 +2,7 @@ const GitBook = require('gitbook-core');
 const algoliasearch = require('algoliasearch');
 
 const AlgoliaResults = require('./components/AlgoliaResults');
+const unescape = require('./unescape');
 
 const HITS_PER_PAGE = 15;
 
@@ -31,7 +32,8 @@ function searchHandler(query, dispatch, getState) {
             const results = res.hits.map(function(hit) {
                 return {
                     title:   hit.title,
-                    body:    hit.body,
+                    // hit.body is escaped HTML, we need to unescape it
+                    body:    unescape(hit.body),
                     url:     hit.url
                 };
             });
