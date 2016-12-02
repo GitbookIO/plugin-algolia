@@ -2,7 +2,7 @@
 
 Use Algolia as a back-end to index and search your book's content.
 
-This plugins requires gitbook `>=3.0.0`.
+This plugins requires gitbook `>=4.0.0`.
 
 ## How to use it?
 
@@ -61,9 +61,26 @@ When setting up the basic index on Algolia, you will be prompted to generate or 
 
 You do not need to create the index manually for the plugin to work.
 
-#### Exclude a page from indexing
 
-You can remove a page from the indexing process by adding a YAML header to the page:
+### Adding keywords to a page
+
+You can specify explicit keywords for any page.
+
+```md
+---
+search:
+    keywords: ['keyword1', 'keyword2', 'etc.']
+
+---
+
+# My Page
+
+This page will rank better if we search for 'keyword1'.
+```
+
+### Disabling indexing of a page
+
+You can disable the indexing of a specific page by adding a YAML header to the page:
 
 ```md
 ---
@@ -72,5 +89,11 @@ search: false
 
 # My Page
 
-This page is not indexed in Algolia.
+This page is not indexed in by Algolia.
 ```
+
+### Fine tuning the Algolia search rankings
+
+After having indexed your book at least once, you can configure your Algolia index from your [dashboard](https://www.algolia.com/explorer). You can go to the _Ranking_ settings and tell Algolia how to search your pages. You can see below an example configuration, that tells Algolia to search, by order of importance, the keywords of your pages, their title, and finally their content (body).
+
+![Example ranking configuration](./algolia-ranking.png)
