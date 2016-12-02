@@ -1,13 +1,14 @@
-const entities = require('html-entities');
-const htmlEntities = new entities.AllHtmlEntities();
-
 /**
- * Unescape all entities (HTML + XML)
+ * Unescape an HTML string. XSS vulnerable!
  * @param  {String} str
  * @return {String}
  */
 function unescape(str) {
-    return htmlEntities.decode(str);
+    const el = document.createElement('div');
+    // XSS can happen here... But we trust the results from Algolia,
+    // and the impact of XSS is limited on books
+    el.innerHTML = str;
+    return el.textContent;
 }
 
 module.exports = unescape;
