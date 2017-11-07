@@ -39,24 +39,27 @@ module.exports = {
             }
 
             this.log.debug.ln('index page', page.path);
-            // Transform as text
-            const text = page.content.replace(/(<([^>]+)>)/ig, '');
-
+            const url = this.output.toURL(page.path);
             let keywords = [];
             if (searchConfig) {
                 keywords = searchConfig.keywords || [];
             }
-
-            // Add to index
-            return index.addObject({
-                url:   this.output.toURL(page.path),
+            // Transform as paragraphs
+            const text = page.content.replace(/(<([^>]+)>)/ig, '');
+            const lines = text.split(/\r\n|\n|\r/);
+            const lineObjects = lines.map(line => ({
+                url,
                 path:  page.path,
                 title: page.title,
                 keywords,
-                body:  text,
+                body:  line,
                 level: page.level,
                 depth: page.depth
-            })
+              })
+            );
+
+            // Add to index
+            return index.addObjects(lineObjects)
             .then(function() {
                 return page;
             });
